@@ -1,0 +1,59 @@
+﻿@model List<livestock.Models.MarketBuySummary>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<table class="table table-bordered" style="background-color: rgba(243, 228, 193, 0.71)">
+    <thead>
+        <tr>
+            <th class='text-center'>
+                TYPE
+            </th>
+            <th class='text-center'>
+                Vendor
+            </th>
+            <th class='text-center'>
+                Number
+            </th>
+            <th class='text-center'>
+                Av. PRICE
+            </th>
+            <th class='text-center'>
+                FREIGHT
+            </th>
+            <th class='text-center'>
+                Av. SKIN
+            </th>
+            <th class='text-center'>
+                Av. WEIGHT
+            </th>
+            <th class='text-center'>
+                COST per/kg
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 0;
+
+            @foreach (var item in Model)
+            {
+                <tr id="tr' + @i + '">
+                    <td>
+                        <input type="text" class="form-control" id="@("StockPurchase_MarketBuySummaries_"+i+"__TypeOfAnimal_Name")" name="StockPurchase.MarketBuySummaries[@i].Name" value="@item.TypeOfAnimal.Name" readonly>
+                        <input type="hidden" class="form-control" id="@("StockPurchase_MarketBuySummaries_"+i+"__TypeOfAnimalID")" name="StockPurchase.MarketBuySummaries[@i].TypeOfAnimalID" value="@item.TypeOfAnimal.ID">
+                        <input type="hidden" class="form-control" id="@("StockPurchase_MarketBuySummaries_"+i+"__ID")" name="StockPurchase.MarketBuySummaries[@i].ID" value="@item.ID">
+                    </td>
+                    <td><input type="text" class="form-control" id="@("StockPurchase_MarketBuySummaries_"+i+"__Description")" name="StockPurchase.MarketBuySummaries[@i].Description" value="@item.Description" readonly></td>
+                    <td><input type="text" class="form-control" id="@("StockPurchase_MarketBuySummaries_"+i+"__Number")" name="StockPurchase.MarketBuySummaries[@i].Number" value="@item.Number" readonly></td>
+                    <td><input type="text" class="form-control" id="@("StockPurchase_MarketBuySummaries_"+i+"__AvPrice")" name="StockPurchase.MarketBuySummaries[@i].AvPrice" value="@item.AvPrice" readonly></td>
+                    <td><input type="text" class="form-control" id="@("StockPurchase_MarketBuySummaries_"+i+"__Freight")" name="StockPurchase.MarketBuySummaries[@i].Freight" onchange="@("CostXKg('" + i +"')")" value="@item.Freight"></td>
+                    <td><input type="text" class="form-control" id="@("StockPurchase_MarketBuySummaries_"+i+"__Skin")" name="StockPurchase.MarketBuySummaries[@i].Skin" onchange="@("CostXKg('" + i +"')")" value="@item.Skin"></td>
+                    <td><input type="text" class="form-control" id="@("StockPurchase_MarketBuySummaries_"+i+"__AvWeight")" name="StockPurchase.MarketBuySummaries[@i].AvWeight" onchange="@("CostXKg('" + i +"')")" value="@item.AvWeight"></td>
+                    <td><input type="text" class="form-control" id="@("StockPurchase_MarketBuySummaries_"+i+"__CostXKg")" name="StockPurchase.MarketBuySummaries[@i].CostXKg" value="@item.CostXKg" readonly></td>
+                </tr>
+                i++;
+            }
+        }
+    </tbody>
+</table>

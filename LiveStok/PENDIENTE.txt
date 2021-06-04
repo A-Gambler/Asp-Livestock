@@ -1,0 +1,13 @@
+﻿*Pending WeightSheet (toggle Button, Post)
+*Invitar Usuario (How to extend Asp.Net User Table AspNet Core 2.1)
+*Wire Price Per Head Buy
+*Price Per Herad Buy Summary
+Barra de busqueda
+Editar/Bloquear Usuario
+Tipos de Usuarios? => Administrador
+*Market Buy
+Send/Recover Password
+
+
+*Readonly StockPurchase List
+*Edit Price Per Head Buy

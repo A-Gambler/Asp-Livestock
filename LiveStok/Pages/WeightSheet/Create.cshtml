@@ -1,0 +1,257 @@
+﻿@page
+@model LiveStok.Pages.WeightSheetPage.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Create Weight Sheet</h2>
+
+<hr />
+<form method="post">
+    <div class="row">
+        <div class="col-md-2">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+            <label asp-for="WeightSheet.StockPurchaseID" class="control-label"></label>
+            <select asp-for="WeightSheet.StockPurchaseID" class="form-control" asp-items="ViewBag.StockPurchaseID"></select>
+        </div>*@
+            <input type="hidden" asp-for="WeightSheet.StockPurchaseID" />
+
+            <div class="form-group">
+                <label asp-for="StockPurchase.BuyerNo" class="control-label"></label>
+                <input asp-for="StockPurchase.BuyerNo" class="form-control" readonly="readonly" />
+                @*<select asp-for="StockPurchase.TypeOfAnimal" class="form-control" asp-items="ViewBag.TypesOfAnimals"></select>*@
+                @*<span asp-validation-for="WeightSheet.Category" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.TypeOfAnimal.Name" class="control-label"></label>
+                <input asp-for="StockPurchase.TypeOfAnimal.Name" class="form-control" readonly="readonly" />
+                @*<select asp-for="StockPurchase.TypeOfAnimal" class="form-control" asp-items="ViewBag.TypesOfAnimals"></select>*@
+                @*<span asp-validation-for="WeightSheet.Category" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <label asp-for="WeightSheet.LotNumber" class="control-label"></label>
+                <input asp-for="WeightSheet.LotNumber" class="form-control" />
+                <span asp-validation-for="WeightSheet.LotNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WeightSheet.Date" class="control-label"></label>
+                <input asp-for="WeightSheet.Date" class="form-control" />
+                <span asp-validation-for="WeightSheet.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WeightSheet.Origin" class="control-label"></label>
+                <input asp-for="WeightSheet.Origin" class="form-control" />
+                <span asp-validation-for="WeightSheet.Origin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WeightSheet.Skin" class="control-label"></label>
+                <input asp-for="WeightSheet.Skin" class="form-control" />
+                <span asp-validation-for="WeightSheet.Skin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WeightSheet.WeightOff" class="control-label"></label>
+                <input asp-for="WeightSheet.WeightOff" class="form-control" />
+                <span asp-validation-for="WeightSheet.WeightOff" class="text-danger"></span>
+            </div>
+            
+
+        </div>
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-1">
+            <textarea cols="10" rows="24" asp-for="WeightTextList"></textarea>
+            
+            <input type="submit" value="Calculate" class="btn btn-success cancel" asp-page-handler="Calculate" />
+            
+        </div>
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-6">
+            <div class="row">
+                <div class="panel panel-default panel-success">
+                    <div class="panel-body">
+                        @*<dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TotalCount)
+                        </dt>
+                        <dd>
+                            <input type="text" readonly="readonly" value="@Model.TotalCount" />
+                        </dd>
+                    </dl>*@
+                        <table style='width:100%;overflow-x:scroll' class="text-center">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Count
+                                    </th>
+                                    <th>
+                                        Ave Wgt
+                                    </th>
+                                    <th>
+                                        Total Wgt
+                                    </th>
+                                    <th>
+                                        Ave Fat
+                                    </th>
+                                    <th>
+                                        Ave $/Kg
+                                    </th>
+                                    <th>
+                                        Ave $
+                                    </th>
+                                    <th>
+                                        Total $
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(model => model.WeightSheetCalculation.TotalCount)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.WeightSheetCalculation.AverageWeight)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.WeightSheetCalculation.TotalWeight)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.WeightSheetCalculation.AverageFat)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.WeightSheetCalculation.AveragePriceXKilo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.WeightSheetCalculation.AveragePrice)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.WeightSheetCalculation.TotalValue_WithoutSkin)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="panel panel-default panel-success">
+                    <div class="panel-body">
+                        <table style='width:100%;overflow-x:scroll' class='table table-striped table-condensed table-hover'>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.WeightSheetCalculation.weightRanges[0].WeightClass)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.WeightSheetCalculation.weightRanges[0].Range)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.WeightSheetCalculation.weightRanges[0].Count)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.WeightSheetCalculation.weightRanges[0].WeightPercentageOfTotal)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.WeightSheetCalculation.weightRanges[0].Weight)
+                                    </th>
+
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.WeightSheetCalculation.weightRanges[0].Price)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.WeightSheetCalculation.weightRanges[0].Value)
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.WeightSheetCalculation.weightRanges)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.WeightClass)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Range)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Count)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.WeightPercentageOfTotal)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Weight)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Price)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Value)
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="panel panel-default panel-success">
+                    <div class="panel-body"  style="padding-top:0px;padding-bottom:0px">
+                        <h4>
+                            <table style='width:100%;overflow-x:scroll' class="text-right">
+                                <thead>
+                                    <tr>
+                                        <th class="text-right">
+                                            Total Skin $
+                                        </th>
+                                        <th class="text-right">
+                                            Total $
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(model => model.WeightSheetCalculation.SkinValue)
+                                        </td>
+                                        <td>
+                                            <h3>
+                                                @Html.DisplayFor(model => model.WeightSheetCalculation.TotalValue_SkinPlusValue)
+                                                    </h3>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="submit" value="Create" class="btn btn-success btn-lg" asp-page-handler="Create" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+
+                    </div>
+                </div>
+</form>
+
+        <div>
+            <a asp-page="Index">Back to List</a>
+        </div>
+
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }

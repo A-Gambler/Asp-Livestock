@@ -1,0 +1,310 @@
+﻿@model LiveStok.Models.NonDBModels.PartialStockPurchaseBuyModel
+@*<div class="panel panel-default panel-success">
+    <div class="panel-body" style="padding-top:15px;padding-bottom:15px">*@
+
+<div class="container">
+    <ul class="nav nav-tabs">
+        @switch (Model.StockPurchase.BuyTypeID.ToString())
+        {
+            case "d180ff28-1321-467a-a0de-d7955d463762": // "Private Buy"
+                <li class="active"><a data-toggle="tab" href="#menu1">Price per Head Buy&nbsp;&nbsp;</a></li>
+                break;
+
+            case "29dec9c6-c2c3-4603-9c37-3256ab99215a": // "Market Buy"
+                <li class="active"><a data-toggle="tab" href="#menu2">Market Buy&nbsp;&nbsp;</a></li>
+                break;
+
+
+            case "196d17bd-5320-47da-9d44-57ff705c18b9": // "Hooks Buy"
+                <li class="active"><a data-toggle="tab" href="#home">Hooks Buy&nbsp;&nbsp;</a></li>
+                break;
+
+            default:
+                break;
+        }
+
+    </ul>
+
+    @*<div class="tab-content">*@
+
+    @if (Model.StockPurchase.BuyTypeID.ToString() == "196d17bd-5320-47da-9d44-57ff705c18b9") // "Hooks Buy")
+    {
+        @*<div id="home" class="tab-pane fade in active">*@
+        <div class="col-md-2" style="margin-top:20px">
+            <table>
+                <tr>
+                    <td width="65%">
+                        <label asp-for="StockPurchase.WCl1Price" class="control-label"></label>
+                    </td>
+                    <td>
+                        <input asp-for="StockPurchase.WCl1Price" class="form-control text-center" readonly="readonly" />
+                        <span asp-validation-for="StockPurchase.WCl1Price" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="StockPurchase.WCl2Price" class="control-label"></label>
+                    </td>
+                    <td>
+                        <input asp-for="StockPurchase.WCl2Price" class="form-control text-center" readonly="readonly" />
+                        <span asp-validation-for="StockPurchase.WCl2Price" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="StockPurchase.WCl3Price" class="control-label"></label>
+                    </td>
+                    <td>
+                        <input asp-for="StockPurchase.WCl3Price" class="form-control text-center" readonly="readonly" />
+                        <span asp-validation-for="StockPurchase.WCl3Price" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="StockPurchase.WCl4Price" class="control-label"></label>
+                    </td>
+                    <td>
+                        <input asp-for="StockPurchase.WCl4Price" class="form-control text-center" readonly="readonly" />
+                        <span asp-validation-for="StockPurchase.WCl4Price" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="StockPurchase.WCl5Price" class="control-label"></label>
+                    </td>
+                    <td>
+                        <input asp-for="StockPurchase.WCl5Price" class="form-control text-center" readonly="readonly" />
+                        <span asp-validation-for="StockPurchase.WCl5Price" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="StockPurchase.WCl6Price" class="control-label"></label>
+                    </td>
+                    <td>
+                        <input asp-for="StockPurchase.WCl6Price" class="form-control text-center" readonly="readonly" />
+                        <span asp-validation-for="StockPurchase.WCl6Price" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="StockPurchase.WCl7Price" class="control-label"></label>
+                    </td>
+                    <td>
+                        <input asp-for="StockPurchase.WCl7Price" class="form-control text-center" readonly="readonly" />
+                        <span asp-validation-for="StockPurchase.WCl7Price" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="StockPurchase.WCl8Price" class="control-label"></label>
+                    </td>
+                    <td>
+                        <input asp-for="StockPurchase.WCl8Price" class="form-control text-center" readonly="readonly" />
+                        <span asp-validation-for="StockPurchase.WCl8Price" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="StockPurchase.WCl9Price" class="control-label"></label>
+                    </td>
+                    <td>
+                        <input asp-for="StockPurchase.WCl9Price" class="form-control text-center" readonly="readonly" />
+                        <span asp-validation-for="StockPurchase.WCl9Price" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="StockPurchase.WCl10Price" class="control-label"></label>
+                    </td>
+                    <td>
+                        <input asp-for="StockPurchase.WCl10Price" class="form-control text-center" readonly="readonly" />
+                        <span asp-validation-for="StockPurchase.WCl10Price" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="StockPurchase.WCl11Price" class="control-label"></label>
+                    </td>
+                    <td>
+                        <input asp-for="StockPurchase.WCl11Price" class="form-control text-center" readonly="readonly" />
+                        <span asp-validation-for="StockPurchase.WCl11Price" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="StockPurchase.WCl12Price" class="control-label"></label>
+                    </td>
+                    <td>
+                        <input asp-for="StockPurchase.WCl12Price" class="form-control text-center" readonly="readonly" />
+                        <span asp-validation-for="StockPurchase.WCl12Price" class="text-danger"></span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        @*</div>*@
+    }
+
+
+
+    @if (Model.StockPurchase.BuyTypeID.ToString() == "d180ff28-1321-467a-a0de-d7955d463762") // "Private Buy"
+    {
+        @*<div id="menu1" class="tab-pane">*@
+        @*<div class="col-md-4" style="margin-top:20px">*@
+        <div class="col-md-8" style="margin-top:20px">
+            <table style="min-width:600px">
+                <thead>
+                    <tr>
+                        <th class="text-center" width="25%">
+                            <label asp-for="PricePerHeadBuys[0].TypeOfAnimalID" class="control-label"></label>
+                        </th>
+                        <th class="text-center">
+                            <label asp-for="PricePerHeadBuys[0].HeadsBought" class="control-label"></label>
+                        </th>
+                        <th class="text-center">
+                            <label asp-for="PricePerHeadBuys[0].Price" class="control-label"></label>
+                        </th>
+                        <th class="text-center">
+                            <label asp-for="PricePerHeadBuys[0].Freight" class="control-label"></label>
+                        </th>
+                        <th class="text-center">
+                            <label asp-for="PricePerHeadBuys[0].Skin" class="control-label"></label>
+                        </th>
+                        <th class="text-center">
+                            <label asp-for="PricePerHeadBuys[0].Weight" class="control-label"></label>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Models.PricePerHeadBuy item in Model.PricePerHeadBuys)
+                    {
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <select asp-for="@item.TypeOfAnimalID" class="form-control" asp-items="Model.TypeOfAnimals_SelectList" disabled="disabled"></select>
+                                    <span asp-validation-for="@item.TypeOfAnimalID" class="text-danger"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input asp-for="@item.HeadsBought" class="form-control text-center" readonly="readonly" />
+                                    <span asp-validation-for="@item.HeadsBought" class="text-danger"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input asp-for="@item.Price" class="form-control text-center" readonly="readonly" />
+                                    <span asp-validation-for="@item.Price" class="text-danger"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input asp-for="@item.Freight" class="form-control text-center" readonly="readonly" />
+                                    <span asp-validation-for="@item.Freight" class="text-danger"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input asp-for="@item.Skin" class="form-control text-center" readonly="readonly" />
+                                    <span asp-validation-for="@item.Skin" class="text-danger"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input asp-for="@item.Weight" class="form-control text-center" readonly="readonly" />
+                                    <span asp-validation-for="@item.Weight" class="text-danger"></span>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        @*</div>*@
+        <div class="col-md-8" id="SummaryTotals">
+            <partial name="_SummaryTotalsPrivateBuy" model="Model.PricePerHeadBuys" />
+        </div>
+
+    }
+
+
+    @if (Model.StockPurchase.BuyTypeID.ToString() == "29dec9c6-c2c3-4603-9c37-3256ab99215a") // "Market Buy"
+    {
+        @*<div class="col-md-4" style="margin-top:20px">*@
+        <div class="col-md-8" style="margin-top:20px">
+            <table style="min-width:600px">
+                <thead>
+                    <tr>
+                        <th class="text-center" width="25%">
+                            <label asp-for="MarketBuys[0].AgentID" class="control-label"></label>
+                        </th>
+                        <th class="text-center" width="25%">
+                            <label asp-for="MarketBuys[0].TypeOfAnimalID" class="control-label"></label>
+                        </th>
+                        <th class="text-center">
+                            <label asp-for="MarketBuys[0].Number" class="control-label"></label>
+                        </th>
+                        <th class="text-center">
+                            <label asp-for="MarketBuys[0].Price" class="control-label"></label>
+                        </th>
+                        <th class="text-center">
+                            <label asp-for="MarketBuys[0].CodeDesc" class="control-label"></label>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="MarketBuy">
+
+                    @{
+
+                        foreach (Models.MarketBuy item in Model.MarketBuys)
+                        {
+
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+                                        <select asp-for="@item.AgentID" class="form-control" asp-items="Model.Agents_SelectList" disabled="disabled"></select>
+                                        <span asp-validation-for="@item.AgentID" class="text-danger"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <select asp-for="@item.TypeOfAnimalID" class="form-control" asp-items="Model.TypeOfAnimals_SelectList" disabled="disabled"></select>
+                                        <span asp-validation-for="@item.TypeOfAnimalID" class="text-danger"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input asp-for="@item.Number" class="form-control text-center" readonly="readonly" />
+                                        <span asp-validation-for="@item.Number" class="text-danger"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input asp-for="@item.Number" class="form-control text-center" readonly="readonly" />
+                                        <span asp-validation-for="@item.Price" class="text-danger"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input asp-for="@item.CodeDesc" class="form-control text-center" readonly="readonly" />
+                                        <span asp-validation-for="@item.CodeDesc" class="text-danger"></span>
+                                    </div>
+                                </td>
+
+                            </tr>
+
+                        }
+                    }
+                </tbody>
+            </table>
+            <partial name="_MarketBuySummaryTotals" model="Model.StockPurchase.MarketBuySummaries" />
+        </div>
+    }
+
+
+
+</div>
+
+@*</div>
+    </div>*@

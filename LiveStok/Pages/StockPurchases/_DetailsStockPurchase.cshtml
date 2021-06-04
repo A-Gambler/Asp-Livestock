@@ -1,0 +1,174 @@
+﻿@model Models.StockPurchase
+
+
+
+
+
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => Model.Date)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => Model.Date)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => Model.BuyTypeID)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => Model.BuyType.Name)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => Model.BuyerNo)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => Model.BuyerNo)
+    </dd>
+
+    @{
+        switch (Model.BuyTypeID.ToString())
+        {
+            case "29dec9c6-c2c3-4603-9c37-3256ab99215a"://Market Buy
+
+                break;
+            case "d180ff28-1321-467a-a0de-d7955d463762"://Private Buy
+
+
+                break;
+            case "196d17bd-5320-47da-9d44-57ff705c18b9"://Hooks Buy
+                <dt>
+                    @Html.DisplayNameFor(model => Model.TypeOfAnimal)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => Model.TypeOfAnimal.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => Model.Number)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => Model.Number)
+                </dd>               
+                <dt>
+                    @Html.DisplayNameFor(model => Model.EstimatedWeight)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => Model.EstimatedWeight)
+                </dd>
+
+                break;
+            default:
+
+
+                break;
+
+        }
+    }
+
+    @*<dt>
+            @Html.DisplayNameFor(model => Model.TypeOfAnimal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => Model.TypeOfAnimal.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => Model.Number)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => Model.Number)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => Model.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => Model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => Model.Freight)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => Model.Freight)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => Model.EstimatedWeight)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => Model.EstimatedWeight)
+        </dd>*@
+    <dt>
+        @Html.DisplayNameFor(model => Model.IntendedDeliveryDate)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => Model.IntendedDeliveryDate)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => Model.DateDelivered)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => Model.DateDelivered)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => Model.NumberDelivered)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => Model.NumberDelivered)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => Model.YTBDelivered)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => Model.YTBDelivered)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => Model.InvoiceRecD)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => Model.InvoiceRecD)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => Model.ContactName)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => Model.ContactName)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => Model.ContactPhone)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => Model.ContactPhone)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => Model.ContactFax)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => Model.ContactFax)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => Model.Buyer)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => Model.Buyer.Code)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => Model.Agent)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => Model.Agent.Name)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => Model.Location)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => Model.Location.Name)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => Model.VendorName)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => Model.VendorName)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => Model.Transport)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => Model.Transport.Name)
+    </dd>
+</dl>

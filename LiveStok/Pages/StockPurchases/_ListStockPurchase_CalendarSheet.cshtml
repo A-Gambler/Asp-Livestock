@@ -1,0 +1,108 @@
+﻿@using LiveStok.Models.NonDBModels;
+@model List<CalendarSheetDay_StockPurchaseRow>
+@inject livestock.Data.ApplicationDbContext _context;
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{ 
+    string DivHiddenTableName;
+    string DivHiddenTableNameWithHashPrefix;
+}
+
+@foreach (var item in Model)
+{
+    try
+    {
+
+        DivHiddenTableName = "DivTableChart" + item.StockPurchase.ID.ToString();
+        DivHiddenTableNameWithHashPrefix = "#DivTableChart" + item.StockPurchase.ID.ToString();
+
+
+        <tr onclick="location.href = '/StockPurchases/EditDelivered?id=@item.StockPurchase.ID'" style="cursor:pointer">
+        @*<tr onclick="ChangePage('@item.StockPurchase.ID', 'Details')"  >*@
+            <td>
+                @*<center>
+                    <button data-toggle="collapse" data-target="@DivHiddenTableNameWithHashPrefix" style="opacity:0.4;width:50px;border:none;border-radius:3px;color:black;background-color:cornflowerblue">&or;</button>
+                </center>*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockPurchase.BuyerNo)
+            </td>
+            <td colspan="2">
+                <div style="margin-left:100px;margin-top:0px;padding:0px">
+                    <Table class="table-condensed table-bordered ">
+                        @if (item.StockPurchase.BuyTypeID.ToString() == "196d17bd-5320-47da-9d44-57ff705c18b9") // "Hooks Buy"
+                        {
+                        <tr>
+                            <td>
+                                @item.StockPurchase.TypeOfAnimal.Name
+                            </td>
+                            <td>
+                                @item.StockPurchase.Number
+                            </td>
+                        </tr>
+                        }
+                        else
+                        {
+                            @foreach (var AnimalRow in item.animalQuantityRowTotals)
+                            {
+                                <tr>
+                                    <td>
+                                        @AnimalRow.AnimalName
+                                    </td>
+                                    <td>
+                                        @AnimalRow.Quantity
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </Table>
+                </div>
+             </td>
+                
+            @*<td>
+                @Html.DisplayFor(modelItem => item.StockPurchase.TypeOfAnimal.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockPurchase.Number)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.StockPurchase.EstimatedWeight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockPurchase.Agent.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockPurchase.Location.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockPurchase.VendorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockPurchase.Transport.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockPurchase.IntendedDeliveryDate)
+            </td>
+
+            <td>
+                @*<a href="/StockPurchases/Edit?id=@item.ID">Edit</a> |
+                    <a href="/StockPurchases/Delete?id=@item.ID">Delete</a>*@
+            </td>
+        </tr>
+        <tr>
+
+            @*<div id="@DivHiddenTableName" class="collapse" style="margin-left:50px;margin-right:25px; margin-top:10px">*@
+            
+            
+        </tr>
+    }
+    catch (Exception ex)
+    {
+
+    }
+
+}
+
+

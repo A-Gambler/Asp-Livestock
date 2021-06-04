@@ -1,0 +1,116 @@
+﻿@page
+@model livestock.Pages.StockPurchasesPage.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Stock Purchases</h2>
+
+
+<div class="row" style="margin-bottom: 10px;">
+    <div class="col-md-7">
+        <p>
+            <a asp-page="Create" class="btn btn-default btn-success">Create New</a>
+        </p>
+    </div>
+    <div class="col-md-4">
+        <div class="input-group">
+            <input id="search" type="text" class="form-control" name="search" placeholder="Search" onkeyup="RefreshStockPurchaseGrid($('#search').val(),@Model.StockPurchase.PageIndex)">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+        </div>     
+    </div>
+    <div class="col-md-1"></div>
+</div>
+
+
+@*<div class="panel panel-default">*@
+<div class="panel">
+    @*<div class="container" style='width:@(240 * 10)px;overflow-y:auto;overflow-x:scroll'>*@
+    <table style='width:100%;overflow-x:scroll;cursor:pointer' class='table table-striped table-condensed table-hover'>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.StockPurchase[0].Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StockPurchase[0].BuyerNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StockPurchase[0].Buyer)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StockPurchase[0].TypeOfAnimal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StockPurchase[0].Number)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.StockPurchase[0].Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StockPurchase[0].Freight)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StockPurchase[0].EstimatedWeight)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StockPurchase[0].Agent)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StockPurchase[0].Location)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StockPurchase[0].VendorName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StockPurchase[0].IntendedDeliveryDate)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.StockPurchase[0].Transport)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StockPurchase[0].DateDelivered)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StockPurchase[0].NumberDelivered)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StockPurchase[0].YTBDelivered)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StockPurchase[0].InvoiceRecD)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StockPurchase[0].ContactName)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.StockPurchase[0].ContactPhone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StockPurchase[0].ContactFax)
+                    </th>*@
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="ListStockPurchaseBody">
+            <partial name="_ListStockPurchase" model="Model.StockPurchase" />
+        </tbody>
+    </table>
+    @*</div>*@
+
+    
+   
+</div>
+
+
+
+<script>
+    function ChangePage(id, Page)
+    {
+        location.href = '/StockPurchases/' + Page +'?id=' + id;
+    }
+</script>

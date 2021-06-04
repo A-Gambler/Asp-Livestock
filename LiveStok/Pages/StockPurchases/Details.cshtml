@@ -1,0 +1,241 @@
+﻿@page
+@model livestock.Pages.StockPurchasesPage.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<link href="~/css/cards-gallery.css" rel="stylesheet" />
+
+<h2>Details</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <div>
+            <h4>StockPurchase</h4>
+            <hr />
+            <partial name="_DetailsStockPurchase" model="Model.StockPurchase" />
+            @*<dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.StockPurchase.Date)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StockPurchase.Date)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StockPurchase.BuyTypeID)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StockPurchase.BuyType.Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StockPurchase.BuyerNo)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StockPurchase.BuyerNo)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StockPurchase.Number)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StockPurchase.Number)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StockPurchase.Price)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StockPurchase.Price)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StockPurchase.Freight)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StockPurchase.Freight)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StockPurchase.EstimatedWeight)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StockPurchase.EstimatedWeight)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StockPurchase.IntendedDeliveryDate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StockPurchase.IntendedDeliveryDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StockPurchase.DateDelivered)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StockPurchase.DateDelivered)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StockPurchase.NumberDelivered)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StockPurchase.NumberDelivered)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StockPurchase.YTBDelivered)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StockPurchase.YTBDelivered)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StockPurchase.InvoiceRecD)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StockPurchase.InvoiceRecD)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StockPurchase.ContactName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StockPurchase.ContactName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StockPurchase.ContactPhone)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StockPurchase.ContactPhone)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StockPurchase.ContactFax)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StockPurchase.ContactFax)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StockPurchase.Buyer)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StockPurchase.Buyer.Code)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StockPurchase.TypeOfAnimal)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StockPurchase.TypeOfAnimal.Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StockPurchase.Agent)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StockPurchase.Agent.Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StockPurchase.Location)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StockPurchase.Location.Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StockPurchase.Vendor)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StockPurchase.Vendor.Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StockPurchase.Transport)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StockPurchase.Transport.Name)
+            </dd>
+        </dl>*@
+        </div>
+        <div>
+            <a asp-page="./Edit" asp-route-id="@Model.StockPurchase.ID">Edit</a> |
+            <a asp-page="./Index">Back to List</a>
+        </div>
+    </div>
+
+    <div class="col-md-1"></div>
+
+    <div class="col-md-6">
+
+        <div class="panel panel-default panel-success">
+            <div class="panel-heading">
+                @*<form method="post" enctype="multipart/form-data" asp-controller="UploadFiles" asp-action="Index">*@
+                <form method="post" enctype="multipart/form-data" asp-route-StockPurchaseID="@Model.StockPurchase.ID">
+                    @*<div class="form-group pull-left">*@
+                    @*<p>Upload one or more files using this form:</p>*@
+                    <table>
+                        <tr>
+                            <td>
+
+                                <input type="file" name="files" multiple />
+                            </td>
+                            <td>
+                                <input type="submit" value="Upload" class="btn btn-success" style="margin-left:30px"/>
+                            </td>
+                        </tr>
+                    </table>
+
+
+
+                    @*</div>*@
+
+                </form>
+            </div>
+
+            <div class="panel-body">
+                <section class="gallery-block cards-gallery">
+                    <div class="container">
+                        <form method="post">
+                            <div class="heading">
+                                @*<h2>Certificaciones</h2>*@
+                            </div>
+                            <div class="row">
+                                @foreach (var file in Model.AttachedFiles)
+                                {
+                                    <div class="col-md-2">
+                                        <div class="card border-0 transform-on-hover">
+                                            <input type="submit" class="btn" value="X" asp-page-handler="DeleteAttachedFile" asp-route-StockPurchaseID="@Model.StockPurchase.ID" asp-route-FilePhysicalPath="@file.FilePhysicalPath"/>
+                                            <a class="lightbox" href="@file.FileRelativePath" target="_blank">
+                                                <img src="@file.ImageThumbnailRelativePath" alt="Card Image" class="card-img-top">
+                                            </a>
+                                            <div class="card-body" style="max-width:2500px">
+                                                <h6><a href="#">@file.Name</a></h6>
+                                                @*<p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>*@
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                }
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        @if (@Model.StockPurchase.WeightSheet == null)
+        {
+            <a asp-page="/WeightSheet/Create" asp-route-StockPurchaseID="@Model.StockPurchase.ID" class="btn btn-success">Create Weight Sheet</a>
+        }
+        else
+        {
+            <a asp-page="/WeightSheet/Details" asp-route-StockPurchaseID="@Model.StockPurchase.WeightSheet.ID" class="btn btn-primary">View Weight Sheet</a>
+
+        }
+    </div>
+</div>
+
+<div class="row"></div>
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-9">
+        <div class="panel panel-default panel-success">
+        <div class="panel-body" style="padding-top:15px;padding-bottom:15px">
+        <partial name="PartialStockPurchaseBuy" model="Model.PartialStockPurchaseBuyModel" />
+        </div>
+        </div>
+
+    </div>    
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+@*<script>baguetteBox.run('.cards-gallery', { animation: 'slideIn' });</script>*@

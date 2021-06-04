@@ -1,0 +1,534 @@
+﻿@page
+@model livestock.Pages.StockPurchasesPage.Summarized
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Summary</h2>
+
+
+<div class="panel panel-default">
+    @*<h3><div class="panel-heading">Tareas propias</div></h3>*@
+    <br />
+    @*<div class="container">*@
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">Delivered (Last 30 days)&nbsp;&nbsp;<span class="badge badge-success" style="background-color:green">@Model.StockPurchase.Where(x => x.DateDelivered != null && x.DateDelivered.Value.Date > DateTime.Now.AddDays(-30).Date).Count()</span></a></li>
+        <li><a data-toggle="tab" href="#menu1">Pending&nbsp;&nbsp;<span class="badge badge-success">@Model.StockPurchase.Where(x => x.DateDelivered == null).Count()</span></a></li>
+        <li><a data-toggle="tab" href="#menu2">Without Invoice&nbsp;&nbsp;<span class="badge badge-success">@Model.StockPurchase.Where(x => x.InvoiceRecD == false).Count()</span></a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].Date)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].BuyerNo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].Buyer)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].TypeOfAnimal)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].Number)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].Price)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].Freight)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].EstimatedWeight)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].Agent)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].Location)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].VendorName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].IntendedDeliveryDate)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].Transport)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].DateDelivered)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].NumberDelivered)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].YTBDelivered)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].InvoiceRecD)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].ContactName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].ContactPhone)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].ContactFax)
+                        </th>
+
+
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.StockPurchase.Where(x => x.DateDelivered != null && x.DateDelivered.Value.Date > DateTime.Now.AddDays(-30).Date))
+                        {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BuyerNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Buyer.Code)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TypeOfAnimal.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Number)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Freight)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EstimatedWeight)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Agent.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Location.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.VendorName)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IntendedDeliveryDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Transport.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateDelivered)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NumberDelivered)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.YTBDelivered)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InvoiceRecD)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContactName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContactPhone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContactFax)
+                        </td>
+
+
+
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                            <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                            <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                        </td>
+                    </tr>
+            }
+                </tbody>
+
+
+                <tfoot style="font-size:large;margin-top:15px">
+                    <tr>
+                        <td><b>Records: </b></td>
+                        <td>@Model.StockPurchase.Where(x => x.DateDelivered != null).Count()</td>
+                    </tr>
+                    @*<tr>
+                        <td><b>Total Price: </b></td>
+                        <td>@Model.StockPurchase.Where(x => x.DateDelivered != null).Sum(i => i.Price).GetValueOrDefault().ToString("c")</td>
+                    </tr>
+                    <tr>
+                        <td><b>Total Freight: </b></td>
+                        <td>@Model.StockPurchase.Where(x => x.DateDelivered != null).Sum(i => i.Freight).GetValueOrDefault().ToString("c")</td>
+                    </tr>*@
+                </tfoot>
+
+            </table>
+        </div>
+
+        <div id="menu1" class="tab-pane fade">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].Date)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].BuyerNo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].Buyer)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].TypeOfAnimal)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].Number)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].Price)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].Freight)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].EstimatedWeight)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].Agent)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].Location)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].VendorName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].IntendedDeliveryDate)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].Transport)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].DateDelivered)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].NumberDelivered)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].YTBDelivered)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].InvoiceRecD)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].ContactName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].ContactPhone)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].ContactFax)
+                        </th>
+
+
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.StockPurchase.Where(x => x.DateDelivered == null))
+                        {
+                    <tr>
+                        <td>
+                            <b><a asp-page="./EditDelivered" asp-route-id="@item.ID">Tag It</a></b>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BuyerNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Buyer.Code)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TypeOfAnimal.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Number)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Freight)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EstimatedWeight)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Agent.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Location.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.VendorName)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IntendedDeliveryDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Transport.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateDelivered)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NumberDelivered)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.YTBDelivered)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InvoiceRecD)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContactName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContactPhone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContactFax)
+                        </td>
+
+                        <td>
+                            <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                            <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                        </td>
+                    </tr>
+            }
+                </tbody>
+
+                <tfoot style="font-size:large;margin-top:15px">
+                    <tr>
+                        <td><b>Records: </b></td>
+                        <td>@Model.StockPurchase.Where(x => x.DateDelivered == null).Count()</td>
+                    </tr>
+                    @*<tr>
+                        <td><b>Total Price: </b></td>
+                        <td>@Model.StockPurchase.Where(x => x.DateDelivered == null).Sum(i => i.Price).GetValueOrDefault().ToString("c")</td>
+                    </tr>
+                    <tr>
+                        <td><b>Total Freight: </b></td>
+                        <td>@Model.StockPurchase.Where(x => x.DateDelivered == null).Sum(i => i.Freight).GetValueOrDefault().ToString("c")</td>
+                    </tr>*@
+                </tfoot>
+            </table>
+        </div>
+
+
+
+        <div id="menu2" class="tab-pane fade">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].Date)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].BuyerNo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].Buyer)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].TypeOfAnimal)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].Number)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].Price)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].Freight)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].EstimatedWeight)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].Agent)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].Location)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].VendorName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].IntendedDeliveryDate)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].Transport)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].DateDelivered)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].NumberDelivered)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].YTBDelivered)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].InvoiceRecD)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].ContactName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].ContactPhone)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StockPurchase[0].ContactFax)
+                        </th>
+
+
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.StockPurchase.Where(x => x.InvoiceRecD == false))
+                        {
+                    <tr>
+                        <td>
+                            <b><a asp-page="./EditDelivered" asp-route-id="@item.ID">Tag It</a></b>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BuyerNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Buyer.Code)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TypeOfAnimal.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Number)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Freight)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EstimatedWeight)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Agent.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Location.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.VendorName)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IntendedDeliveryDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Transport.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateDelivered)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NumberDelivered)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.YTBDelivered)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InvoiceRecD)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContactName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContactPhone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContactFax)
+                        </td>
+
+                        <td>
+                            <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                            <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                        </td>
+                    </tr>
+            }
+                </tbody>
+
+                <tfoot style="font-size:large;margin-top:15px">
+                    <tr>
+                        <td><b>Records: </b></td>
+                        <td>@Model.StockPurchase.Where(x => x.InvoiceRecD == false).Count()</td>
+                    </tr>
+                    @*<tr>
+                        <td><b>Total Price: </b></td>
+                        <td>@Model.StockPurchase.Where(x => x.InvoiceRecD == false).Sum(i => i.Price).GetValueOrDefault().ToString("c")</td>
+                    </tr>
+                    <tr>
+                        <td><b>Total Freight: </b></td>
+                        <td>@Model.StockPurchase.Where(x => x.InvoiceRecD == false).Sum(i => i.Freight).GetValueOrDefault().ToString("c")</td>
+                    </tr>*@
+                </tfoot>
+            </table>
+        </div>
+
+
+
+    </div>
+    @*</div>*@
+
+</div>
+

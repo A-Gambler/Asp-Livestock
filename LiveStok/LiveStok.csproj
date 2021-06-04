@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>aspnet-LiveStok-421F98B1-D248-4753-9B86-9974C312B0DC</UserSecretsId>
+    <AssemblyName>LiveStock</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Pages\borrame\**" />
+    <Content Remove="Pages\borrame\**" />
+    <EmbeddedResource Remove="Pages\borrame\**" />
+    <None Remove="Pages\borrame\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\PriceXWeight.cs" />
+    <Compile Remove="Pages\StockPurchases\Edit - Copy.cshtml.cs" />
+    <Compile Remove="Pages\StockPurchases\Index - Copy.cshtml.cs" />
+    <Compile Remove="Pages\StockPurchases\PendingToBeDelivered.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\StockPurchases\Edit - Copy.cshtml" />
+    <Content Remove="Pages\StockPurchases\Index - Copy.cshtml" />
+    <Content Remove="Pages\StockPurchases\_ListStockPurchase - Copy.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.6" PrivateAssets="All" />
+    <PackageReference Include="Sendgrid" Version="9.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Services\" />
+    <Folder Include="livestock\Data\" />
+    <Folder Include="wwwroot\Attached\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,60 @@
+﻿@model List<livestock.Models.PricePerHeadBuy>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+    bool Typeresult = false;
+    foreach (var row in Model)
+    {
+        if (row.TypeOfAnimal != null)
+        {
+            Typeresult = true;
+        }
+    }
+
+    @if (Typeresult)
+    {
+
+        var AvgList = Model.GroupBy((t => new { AnimalName = t.TypeOfAnimal.Name })).Select(g => new
+        {
+            SumHeadsBought = g.Sum(p => p.HeadsBought),
+            AvPrice = g.Average(p => p.Price),
+            AvSkin = g.Average(p => p.Skin),
+            AvWeight = g.Average(p => p.Weight),
+            AvFreight = g.Average(p => p.Freight),
+            AnimalName = g.Key.AnimalName
+        }).ToList();
+
+        <table class="table table-bordered" style="background-color:rgba(243, 228, 193, 0.71)">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Totals</th>
+                    <th>Av Price</th>
+                    <th>Freight</th>
+                    <th>Av Skin</th>
+                    <th>Av Weight</th>
+                    <th>Price p/kg</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in AvgList)
+                {
+                <tr>
+                    <td>@item.AnimalName</td>
+                    <td>@item.SumHeadsBought</td>
+                    <td>@(Math.Round(Convert.ToDecimal(item.AvPrice), 2))</td>
+                    <td>@(Math.Round(Convert.ToDecimal(item.AvFreight), 2))</td>
+                    <td>@(Math.Round(Convert.ToDecimal(item.AvSkin), 2))</td>
+                    <td>@(Math.Round(Convert.ToDecimal(item.AvWeight), 2))</td>
+                    <td>@(Math.Round(Convert.ToDecimal((item.AvWeight + item.AvPrice + item.AvFreight - item.AvSkin) / item.AvWeight), 2))</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+
+

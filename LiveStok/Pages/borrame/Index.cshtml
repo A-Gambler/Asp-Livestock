@@ -1,0 +1,216 @@
+﻿@page
+@model LiveStok.Pages.borrame.IndexModel
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].BuyerNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].Freight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].EstimatedWeight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].IntendedDeliveryDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].DateDelivered)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].NumberDelivered)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].YTBDelivered)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].InvoiceRecD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].ContactName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].ContactPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].ContactFax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].WCl1Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].WCl2Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].WCl3Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].WCl4Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].WCl5Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].WCl6Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].WCl7Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].WCl8Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].WCl9Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].WCl10Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].WCl11Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].WCl12Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].Buyer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].TypeOfAnimal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].Agent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].Vendor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockPurchase[0].Transport)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.StockPurchase) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BuyerNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Freight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstimatedWeight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IntendedDeliveryDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateDelivered)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberDelivered)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YTBDelivered)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceRecD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactFax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WCl1Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WCl2Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WCl3Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WCl4Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WCl5Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WCl6Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WCl7Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WCl8Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WCl9Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WCl10Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WCl11Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WCl12Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Buyer.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeOfAnimal.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Agent.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vendor.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Transport.ID)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,104 @@
+﻿/*Menu http://thecodeplayer.com/walkthrough/vertical-accordion-menu-using-jquery-css3 */
+
+/*Basic reset*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /*background: #4EB889;*/
+    font-family: Nunito, arial, verdana;
+  }
+
+#accordian {
+    background: #222d32 /*#004050*/;
+    /*width: 250px;*/
+    max-width: 250px;
+    /*margin: 100px auto 0 auto;*/
+    color: white;
+    /*Some cool shadow and glow effect*/
+    /*box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.6), 0 0 200px 1px rgba(255, 255, 255, 0.5);*/
+   
+}
+        /*heading styles*/
+    #accordian h3 {
+        font-size: 12px;
+        line-height: 34px;
+        padding: 0 10px;
+        cursor: pointer;
+        /*fallback for browsers not supporting gradients*/
+        background: #222d32 /*#003040*/;
+        /*background: linear-gradient(#003040, #002535);*/
+       
+    }
+
+    #accordian h2 {
+        margin-top: 0px ;
+        margin-bottom: 0px ;
+    }
+
+    #accordian h1 {
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
+    }
+            /*heading hover effect*/
+            #accordian h3:hover {
+                text-shadow: 0 0 1px rgba(255, 255, 255, 0.7);
+            }
+            /*iconfont styles*/
+    #accordian h3 span {
+        font-size: 16px;
+        margin-right: 10px;
+        
+    }
+        /*list items*/
+        #accordian li {
+            list-style-type: none;
+        }
+        /*links*/
+    #accordian ul ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 11px;
+        line-height: 27px;
+        display: block;
+        padding: 0 15px;
+        /*transition for smooth hover animation*/
+        transition: all 0.15s;
+        background: #2c3b41;
+    }
+            /*hover effect on links*/
+            #accordian ul ul li a:hover {
+                background: #003545;
+                border-left: 5px solid lightgreen;
+            }
+        /*Lets hide the non active LIs by default*/
+        #accordian ul ul {
+            display: none;
+        }
+
+        #accordian li.active ul {
+            display: block;
+        }
+
+
+.content {
+    min-height: 250px;
+    padding: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+} 
+
+.box {
+    position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+    border-top: 3px solid #d2d6de;
+    margin-bottom: 20px;
+    width: 100%;
+    box-shadow: 0px 1px 1px rgba(0,0,0,0.1);
+    padding: 0px 15px 0px 15px;  /*right and left*/
+} 

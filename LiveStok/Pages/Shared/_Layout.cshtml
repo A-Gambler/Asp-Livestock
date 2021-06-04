@@ -1,0 +1,240 @@
+﻿ @inject UserManager<LiveStok.Helpers.ApplicationUser> _userManager;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - livestock</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+
+        <link href="~/css/Pedidos.css" rel="stylesheet" />
+        <link href="~/css/Direcciones.css" rel="stylesheet" />
+        <link href="~/css/AdminLTE.css" rel="stylesheet" />
+        <link href="~/css/_all-skins.css" rel="stylesheet" />
+        <link href="~/css/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+
+        <link href="~/css/Pedidos.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/Direcciones.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/AdminLTE.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/_all-skins.min.css" rel="stylesheet" />
+        <link href="~/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+    </environment>
+    @RenderSection("Styles", required: false)
+</head>
+
+@{
+    string BodyClasses = "";
+    string Content = "";
+    string style = "";
+    string BodyStyle = "";
+    string footer = "";
+    string ContentWrapper = "";
+
+    @if (User.Identity.IsAuthenticated == true)
+    {
+        BodyClasses = "hold-transition sidebar-mini";
+        Content = "wrapper";
+        ContentWrapper = "content-wrapper";
+        style = "padding-top:5px; padding-left:20px";
+        
+    }
+    else
+    {
+        style = "";
+        if (this.Model is livestock.Pages.IndexModel)
+        {
+
+        }
+        else
+        {
+            Content = "content";
+        }
+        footer = "margin-left: 0px;";
+    }
+    }
+
+<body class="skin-blue  @BodyClasses" style="padding-top:0px">
+
+    @if (User.Identity.IsAuthenticated == false)
+    {
+        <header class="main-header">
+            <!-- Sidebar toggle button-->
+            <a asp-page="/Index" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>L</b>SK</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>livestock</b></span>
+            </a>
+            <nav class="navbar navbar-static-top">
+                <!-- Navbar Right Menu -->
+                <div class="navbar-custom-menu" style="margin-right: 30px;">
+                    <ul class="nav navbar-nav">
+                        <li><a asp-page="/Index">Home</a></li>
+                        <li><a asp-page="/About">About</a></li>
+                        <li><a asp-page="/Contact">Contact</a></li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </nav>
+        </header>
+    }
+
+    <div class="@Content">
+
+        @if (User.Identity.IsAuthenticated == true)
+        {
+            <header class="main-header">
+                <!-- Sidebar toggle button-->
+                <a asp-page="/Index" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><b>L</b>SK</span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><b>livestock</b></span>
+                </a>
+                <nav class="navbar navbar-static-top">
+                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+
+                    <!-- Navbar Right Menu -->
+                    <div class="navbar-custom-menu" style="margin-right: 30px;" >
+                        <ul class="nav navbar-nav">
+                            <li><a asp-page="/Index">Home</a></li>
+                            @*<li><a asp-page="/About">About</a></li>
+                            <li><a asp-page="/Contact">Contact</a></li>*@
+                        </ul>
+                        <partial name="_LoginPartial" />
+                    </div>
+                </nav>
+            </header>
+            <aside class="main-sidebar">
+                <section class="sidebar">
+
+                    <div class="user-panel">
+                        @*<div class="pull-left image">
+                                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                            </div>*@
+                        <div class="pull-left info">
+                            <p></p>
+                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        </div>
+                    </div>
+
+
+                    <ul class="sidebar-menu" data-widget="tree">
+                        <li class="header">Livestocks</li>
+                        <li class="active treeview">
+                            <a href="#">
+                                <i class="fa fa-usd" aria-hidden="true"></i><span>Purchases</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/StockPurchases"><i class="fa fa-align-justify" aria-hidden="true"></i>All</a></li>
+                                @*<li><a href="/StockPurchases/IndexHooksBuy"><i class="fa fa-dashboard" aria-hidden="true"></i>Hooks Buy</a></li>*@
+                                <li><a href="/StockPurchases/Summarized"><i class="fa fa-file-text-o" aria-hidden="true"></i>Summary</a></li>
+                                <li><a href="/StockPurchases/CalendarSheet"><i class="fa fa-calendar" aria-hidden="true"></i>Calendar</a></li>
+                            </ul>
+                        </li>
+                        @if ((await _userManager.GetUserAsync(User)).IsAdministrator == true)
+                        {
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-user-circle" aria-hidden="true"></i><span>Users</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/OpenInvitations"><i class="fa fa-cogs" aria-hidden="true"></i>Maintenance</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-cogs" aria-hidden="true"></i><span>Lists</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/Buyers"><i class="fa fa-list-ul" aria-hidden="true"></i>Buyers</a></li>
+                                <li><a href="/Agents"><i class="fa fa-list-ul" aria-hidden="true"></i>Agents</a></li>
+                                <li><a href="/Locations"><i class="fa fa-list-ul" aria-hidden="true"></i>Locations</a></li>
+                                @*<li><a href="/Vendors"><i class="fa fa-list-ul" aria-hidden="true"></i>Vendors</a></li>*@
+                                <li><a href="/Transports"><i class="fa fa-list-ul" aria-hidden="true"></i>Transports</a></li>
+                            </ul>
+                        </li>
+                        }
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+        }
+        <partial name="_CookieConsentPartial" />
+
+        <div class="@ContentWrapper" style="@style">
+
+            @RenderBody()
+
+        </div>
+        @if (User.Identity.IsAuthenticated == true)
+        {
+            <footer class="main-footer" style="@footer">
+                <p>&copy; 2019 - livestock</p>
+            </footer>
+        }
+    </div>
+
+
+    <environment include="Development">
+
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/js/adminlte.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/adminlte.min.js" asp-append-version="true"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#accordian h3").click(function () {
+                //slide up all the link lists
+                $("#accordian ul ul").slideUp();
+                //slide down the link list below the h3 clicked - only if its closed
+                if (!$(this).next().is(":visible")) {
+                    $(this).next().slideDown();
+                }
+            })
+        })
+    </script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

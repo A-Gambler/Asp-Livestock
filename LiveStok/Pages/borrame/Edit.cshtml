@@ -1,0 +1,186 @@
+﻿@page
+@model LiveStok.Pages.borrame.EditModel
+
+<h4>StockPurchase</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="StockPurchase.ID" />
+            <div class="form-group">
+                <label asp-for="StockPurchase.Date" class="control-label"></label>
+                <input asp-for="StockPurchase.Date" class="form-control" />
+                <span asp-validation-for="StockPurchase.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.BuyerNo" class="control-label"></label>
+                <input asp-for="StockPurchase.BuyerNo" class="form-control" />
+                <span asp-validation-for="StockPurchase.BuyerNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.BuyerID" class="control-label"></label>
+                <select asp-for="StockPurchase.BuyerID" class="form-control" asp-items="ViewBag.BuyerID"></select>
+                <span asp-validation-for="StockPurchase.BuyerID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.TypeOfAnimalID" class="control-label"></label>
+                <select asp-for="StockPurchase.TypeOfAnimalID" class="form-control" asp-items="ViewBag.TypeOfAnimalID"></select>
+                <span asp-validation-for="StockPurchase.TypeOfAnimalID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.Number" class="control-label"></label>
+                <input asp-for="StockPurchase.Number" class="form-control" />
+                <span asp-validation-for="StockPurchase.Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.Price" class="control-label"></label>
+                <input asp-for="StockPurchase.Price" class="form-control" />
+                <span asp-validation-for="StockPurchase.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.Freight" class="control-label"></label>
+                <input asp-for="StockPurchase.Freight" class="form-control" />
+                <span asp-validation-for="StockPurchase.Freight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.EstimatedWeight" class="control-label"></label>
+                <input asp-for="StockPurchase.EstimatedWeight" class="form-control" />
+                <span asp-validation-for="StockPurchase.EstimatedWeight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.AgentID" class="control-label"></label>
+                <select asp-for="StockPurchase.AgentID" class="form-control" asp-items="ViewBag.AgentID"></select>
+                <span asp-validation-for="StockPurchase.AgentID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.LocationID" class="control-label"></label>
+                <select asp-for="StockPurchase.LocationID" class="form-control" asp-items="ViewBag.LocationID"></select>
+                <span asp-validation-for="StockPurchase.LocationID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.VendorID" class="control-label"></label>
+                <select asp-for="StockPurchase.VendorID" class="form-control" asp-items="ViewBag.VendorID"></select>
+                <span asp-validation-for="StockPurchase.VendorID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.IntendedDeliveryDate" class="control-label"></label>
+                <input asp-for="StockPurchase.IntendedDeliveryDate" class="form-control" />
+                <span asp-validation-for="StockPurchase.IntendedDeliveryDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.TransportID" class="control-label"></label>
+                <select asp-for="StockPurchase.TransportID" class="form-control" asp-items="ViewBag.TransportID"></select>
+                <span asp-validation-for="StockPurchase.TransportID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.DateDelivered" class="control-label"></label>
+                <input asp-for="StockPurchase.DateDelivered" class="form-control" />
+                <span asp-validation-for="StockPurchase.DateDelivered" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.NumberDelivered" class="control-label"></label>
+                <input asp-for="StockPurchase.NumberDelivered" class="form-control" />
+                <span asp-validation-for="StockPurchase.NumberDelivered" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.YTBDelivered" class="control-label"></label>
+                <input asp-for="StockPurchase.YTBDelivered" class="form-control" />
+                <span asp-validation-for="StockPurchase.YTBDelivered" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="StockPurchase.InvoiceRecD" /> @Html.DisplayNameFor(model => model.InvoiceRecD)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.ContactName" class="control-label"></label>
+                <input asp-for="StockPurchase.ContactName" class="form-control" />
+                <span asp-validation-for="StockPurchase.ContactName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.ContactPhone" class="control-label"></label>
+                <input asp-for="StockPurchase.ContactPhone" class="form-control" />
+                <span asp-validation-for="StockPurchase.ContactPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.ContactFax" class="control-label"></label>
+                <input asp-for="StockPurchase.ContactFax" class="form-control" />
+                <span asp-validation-for="StockPurchase.ContactFax" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.WCl1Price" class="control-label"></label>
+                <input asp-for="StockPurchase.WCl1Price" class="form-control" />
+                <span asp-validation-for="StockPurchase.WCl1Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.WCl2Price" class="control-label"></label>
+                <input asp-for="StockPurchase.WCl2Price" class="form-control" />
+                <span asp-validation-for="StockPurchase.WCl2Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.WCl3Price" class="control-label"></label>
+                <input asp-for="StockPurchase.WCl3Price" class="form-control" />
+                <span asp-validation-for="StockPurchase.WCl3Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.WCl4Price" class="control-label"></label>
+                <input asp-for="StockPurchase.WCl4Price" class="form-control" />
+                <span asp-validation-for="StockPurchase.WCl4Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.WCl5Price" class="control-label"></label>
+                <input asp-for="StockPurchase.WCl5Price" class="form-control" />
+                <span asp-validation-for="StockPurchase.WCl5Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.WCl6Price" class="control-label"></label>
+                <input asp-for="StockPurchase.WCl6Price" class="form-control" />
+                <span asp-validation-for="StockPurchase.WCl6Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.WCl7Price" class="control-label"></label>
+                <input asp-for="StockPurchase.WCl7Price" class="form-control" />
+                <span asp-validation-for="StockPurchase.WCl7Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.WCl8Price" class="control-label"></label>
+                <input asp-for="StockPurchase.WCl8Price" class="form-control" />
+                <span asp-validation-for="StockPurchase.WCl8Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.WCl9Price" class="control-label"></label>
+                <input asp-for="StockPurchase.WCl9Price" class="form-control" />
+                <span asp-validation-for="StockPurchase.WCl9Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.WCl10Price" class="control-label"></label>
+                <input asp-for="StockPurchase.WCl10Price" class="form-control" />
+                <span asp-validation-for="StockPurchase.WCl10Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.WCl11Price" class="control-label"></label>
+                <input asp-for="StockPurchase.WCl11Price" class="form-control" />
+                <span asp-validation-for="StockPurchase.WCl11Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.WCl12Price" class="control-label"></label>
+                <input asp-for="StockPurchase.WCl12Price" class="form-control" />
+                <span asp-validation-for="StockPurchase.WCl12Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

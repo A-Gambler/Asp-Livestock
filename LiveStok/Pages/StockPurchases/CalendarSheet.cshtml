@@ -1,0 +1,135 @@
+﻿@page
+@using LiveStok.Models.NonDBModels;
+
+@model livestock.Pages.StockPurchasesPage.CalendarSheetModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Stock Delivery Schedule</h2>
+
+
+<div class="row" style="margin-bottom: 10px;">
+
+    @*<div class="col-md-4">
+            <div class="input-group">
+                <input id="search" type="text" class="form-control" name="search" placeholder="Search" onkeyup="ListSch($('#search').val())">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+            </div>
+        </div>*@
+    <div class="col-md-1"></div>
+</div>
+
+
+@*<div class="panel panel-default">*@
+
+@*<div class="container" style='width:@(240 * 10)px;overflow-y:auto;overflow-x:scroll'>*@
+@foreach (CalendarSheetData Group in Model.CalendarSheetDataList)
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Date:  @Group.Date.ToString("dddd  dd/MM/yyyy")
+        </div>
+        <div class="panel-body">
+            <table style='width:100%;overflow-x:scroll;cursor:pointer' class='table table-striped table-condensed table-hover'>
+                <thead>
+                    <tr>
+                        <th>
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => Group.calendarSheetDay.StockPurchasesRow.First().StockPurchase.BuyerNo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => Group.calendarSheetDay.StockPurchasesRow.First().StockPurchase.TypeOfAnimal)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => Group.calendarSheetDay.StockPurchasesRow.First().StockPurchase.Number)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => Group.calendarSheetDay.StockPurchasesRow.First().StockPurchase.EstimatedWeight)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => Group.calendarSheetDay.StockPurchasesRow.First().StockPurchase.Agent)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => Group.calendarSheetDay.StockPurchasesRow.First().StockPurchase.Location)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => Group.calendarSheetDay.StockPurchasesRow.First().StockPurchase.VendorName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => Group.calendarSheetDay.StockPurchasesRow.First().StockPurchase.Transport)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => Group.calendarSheetDay.StockPurchasesRow.First().StockPurchase.IntendedDeliveryDate)
+                        </th>
+
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.StockPurchase[0].ContactPhone)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.StockPurchase[0].ContactFax)
+                            </th>*@
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="ListStockPurchaseBody">
+                    <partial name="_ListStockPurchase_CalendarSheet" model="Group.calendarSheetDay.StockPurchasesRow" />
+                </tbody>
+            </table>
+            <br />
+            <Table class="table-condensed table-bordered " style="background-color:lightgray">
+                @foreach (var AnimalRow in Group.calendarSheetDay.animalQuantityDayTotals)
+                {
+                    <tr>
+                        <td>
+                            @AnimalRow.AnimalName
+                        </td>
+                        <td>
+                            @AnimalRow.Quantity
+                        </td>
+                    </tr>
+                }
+
+            </Table>
+            @*</div>*@
+        </div>
+    </div>
+
+    <br />
+
+}
+
+<br/>
+
+   <div class="panel panel-default">
+        <div class="panel-heading">
+            Totals
+        </div>
+        <div class="panel-body">
+            <Table class="table-condensed table-bordered " style="background-color:lightgray">
+                @foreach (var AnimalRow in Model.AnimalQuantityMonthTotals)
+                {
+                    <tr>
+                        <td>
+                            <strong>@AnimalRow.AnimalName</strong>
+                        </td>
+                        <td>
+                            <strong>@AnimalRow.Quantity</strong>
+                        </td>
+                    </tr>
+                }
+
+            </Table>
+            
+        </div>
+    </div>
+
+
+<script>
+    function ChangePage(id, Page) {
+        location.href = '/StockPurchases/' + Page + '?id=' + id;
+    }
+</script>

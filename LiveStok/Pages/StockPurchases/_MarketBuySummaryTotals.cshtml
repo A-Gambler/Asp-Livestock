@@ -1,0 +1,69 @@
+﻿@model List<livestock.Models.MarketBuySummary>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<table class="table table-bordered" style="background-color:rgba(243, 228, 193, 0.71)">
+    <thead>
+        <tr>
+            <th class='text-center'>
+                TYPE
+            </th>
+            <th class='text-center'>
+                Vendor
+            </th>
+            <th class='text-center'>
+                Number
+            </th>
+            <th class='text-center'>
+                Av. PRICE
+            </th>
+            <th class='text-center'>
+                FREIGHT
+            </th>
+            <th class='text-center'>
+                Av. SKIN
+            </th>
+            <th class='text-center'>
+                Av. WEIGHT
+            </th>
+            <th class='text-center'>
+                COST per/kg
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <label>@item.TypeOfAnimal.Name</label>
+                </td>
+                <td>
+                    <label>@item.Description</label>
+                </td>
+                <td>
+                    <label>@item.Number</label>
+                </td>
+                <td>
+                    <label>@item.AvPrice</label>
+                </td>
+                <td>
+                    <label>@item.Freight</label>
+                </td>
+                <td>
+                    <label>@item.Skin</label>
+                </td>
+                <td>
+                    <label>@item.AvWeight</label>
+                </td>
+                <td>
+                    <label>@item.CostXKg</label>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

@@ -1,0 +1,229 @@
+﻿@page
+@model Proyecto.Pages.CalendarModel
+@{
+    ViewData["Title"] = "Calendario";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+
+    @*<h1>Calendar  <a href="StockPurchases/Create"><img id="imgCrearTarea"  src="~/images/Add.png" height="40px" style="cursor:pointer" /></a></h1>*@
+    <h1>Calendar  <a href="StockPurchases/Create"><img  src="~/images/Add.png" style="cursor:pointer;max-height:40px" /></a></h1>
+</div>
+
+<div id="calendar" class="calendar"></div>
+
+@*<div class="modal fade col-md-offset-4 col-md-3" id="ModalPanelCrearTarea">*@
+@*<div id="ModalPanelCrearTarea" class="modal fade" role="dialog">*@    
+
+<div id="ModalPanelCrearTarea" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+                @*<h4 class="modal-title">Crear Tarea</h4>*@
+            </div>
+            <div class="modal-body">
+                @*@await Component.InvokeAsync("CrearTarea") funciona*@
+                @*<partial name="/Pages/vTareas/PartialView_CreateTareaSinModel.cshtml" model=@Model.newTarea />*@
+                @*@await Html.PartialAsync("/Pages/vTareas/PartialView_CreateTareaSinModel.cshtml", new Models.Tareas())*@
+                @*@await Html.PartialAsync("/Pages/vTareas/PartialView_CreateTarea.cshtml", new Proyecto.Pages.vTareas.PartialView_CreateTareaModel(new Proyecto.Models.TiendasContext()))*@
+                @*<form>*@
+
+                @*<div class="row">
+                    <div style="margin:20px">
+                        <form method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label class="control-label">Nombre:</label>
+                                <input asp-for="newTarea.Nombre" class="form-control" />
+                                <span asp-validation-for="newTarea.Nombre" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Fecha Hora:</label>
+                                <div class="input-group date" id="dtp1">
+                                    <input id="txtStart" asp-for="newTarea.FechaHora" type="datetime-local" class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                <span asp-validation-for="newTarea.FechaHora" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label>
+                                        <input id="checkboxTareaRealizada" asp-for="newTarea.Realizada" /> @Html.DisplayNameFor(model => model.newTarea.Realizada)
+                                    </label>
+                                </div>
+                            </div>
+                            <div id="groupFechaRealizada" class="form-group" style="display:none">
+                                <label class="control-label">Fecha Realizada:</label>
+                                <div class="input-group date" id="dtp2">
+                                    <input id="txtStart" asp-for="newTarea.FechaRealizada" type="datetime-local" class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                <span asp-validation-for="newTarea.FechaRealizada" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group" style="text-align:right;margin-top:35px">
+                                <Button type="submit" class="btn btn-default btn-success" asp-page-handler="CreateTarea">Crear</Button>
+                            </div>
+                        </form>
+                    </div>
+                </div>*@
+
+              
+
+                @*</form>*@
+            </div>
+            @*<div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="button" class=" btn btn-primary" id="btnHide">Hide</button>
+                </div>*@
+        </div>
+    </div>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><span id="eventTitle"></span></h4>
+            </div>
+            <div class="modal-body">
+                @*<button id="btnEliminarTarea" class="btn btn-default btn-sm pull-right">
+                    <span class="glyphicon glyphicon-remove"></span> Eliminar
+                </button>*@
+                @*<button id="btnEditarTarea" class="btn btn-default btn-sm pull-right" style="margin-right:5px;">
+                    <span class="glyphicon glyphicon-pencil"></span> Editar
+                </button>*@
+                <p id="pDetails"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    @section Styles {
+        <link rel='stylesheet' href="@Url.Content("~/css/fullcalendar.min.css")" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    }
+
+
+    @section Scripts{
+
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+        <script src="@Url.Content("~/js/moment.min.js")"></script>
+        <script src="@Url.Content("~/js/fullcalendar.min.js")"></script>
+        <script src="@Url.Content("~/js/locale-all.js")"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+        <script>
+            $(function () {
+
+                $(document).ready(function () {
+
+                   
+                    $("#imgCrearTarea").click(function () {
+
+                        $("#ModalPanelCrearTarea").modal('show');
+                    });
+
+                    $("#btnHide").click(function () {
+                        $("#ModalPanelCrearTarea").modal('hide');
+                    });
+                });
+
+                $('#calendar').fullCalendar({
+
+                    //locale: 'es'
+
+                    //defaultView: 'agendaDay',
+                    eventBorderColor: "#de1f1f",
+
+                    //events: 'https://localhost:44396/Tareas/FindAll'
+                    //events: 'http://proyectotienda1.azurewebsites.net/Tareas/FindAll'
+                    events: '/StockPurchasesAPI/FindAll'
+
+                    //events: [
+                    //    {
+                    //        title: 'Instalación Cliente 1',
+                    //        start: '2018-09-25',
+                    //        end: '2018-09-28'
+                    //    },
+                    //    {
+                    //        title: 'Renovación Cliente 2',
+                    //        start: '2018-09-04',
+                    //        end: '2018-09-04'
+                    //    }
+                    //]
+                    ,
+                    eventClick: function (calEvent, jsEvent, view) {
+                        
+                        selectedEvent = calEvent;
+                        $('#myModal #eventTitle').text(calEvent.title);
+                        var $description = $('<div/>');
+                        //$description.append($('<p/>').html('<b>Intended Delivery: </b>' + calEvent.start.format("DD-MMM-YYYY HH:mm a")));
+                        $description.append($('<p/>').html('<b>Intended Delivery: </b>' + calEvent.start.format("DD-MMM-YYYY")));
+                        //if (calEvent.end != null) {
+                        //    $description.append($('<p/>').html('<b>Fecha Realizado: </b>' + calEvent.end.format("DD-MMM-YYYY HH:mm a")));
+                        //}
+                        $description.append($('<p/>').html('<b>Description:</b>' + calEvent.description));
+                        $description.append($('<p/>'));
+                        $('#myModal #pDetails').empty().html($description);
+
+                        $('#myModal').modal();
+                    },
+                   
+                });
+            });
+
+
+            $('#dtp1,#dtp2').datetimepicker({
+                //format: 'DD/MM/YYYY HH:mm A'
+            });
+
+            $('#checkboxTareaRealizada').change(function () {
+
+
+                if (this.checked) {
+                    $('#groupFechaRealizada').show();
+                }
+                else {
+                    $('#groupFechaRealizada').hide();
+                }
+            });
+
+            $('#btnEliminarTarea').click(function () {
+                if (selectedEvent != null && confirm('Esta seguro?')) {
+                   
+                    $.ajax({
+                        type: "POST",
+                        url: '/Tareas/EliminarTarea',
+                        data: { 'eventID': selectedEvent.id },
+                        success: function (data) {
+                            if (data.status) {
+                                //Refresh the calender
+                                // FetchEventAndRenderCalendar();
+                                $('#calendar').fullCalendar('refetchEvents');
+                                $('#myModal').modal('hide');
+                            }
+                        },
+                        error: function () {
+                            alert('Failed');
+                        }
+                    })
+                }
+            })
+        </script>
+    }

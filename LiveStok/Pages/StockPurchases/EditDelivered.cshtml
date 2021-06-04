@@ -1,0 +1,112 @@
+﻿@page
+@model livestock.Pages.StockPurchasesPage.EditDelivered
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>StockPurchase</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="StockPurchase.ID" />
+            <input type="hidden" asp-for="StockPurchase.Date" />
+            <input type="hidden" asp-for="StockPurchase.BuyerNo" />
+            <input type="hidden" asp-for="StockPurchase.BuyerID" />
+            <input type="hidden" asp-for="StockPurchase.BuyTypeID" />
+            <input type="hidden" asp-for="StockPurchase.TypeOfAnimalID" />
+            <input type="hidden" asp-for="StockPurchase.Number" />
+            <input type="hidden" asp-for="StockPurchase.Price" />
+            <input type="hidden" asp-for="StockPurchase.Freight" />
+            <input type="hidden" asp-for="StockPurchase.EstimatedWeight" />
+            <input type="hidden" asp-for="StockPurchase.AgentID" />
+            <input type="hidden" asp-for="StockPurchase.LocationID" />
+            <input type="hidden" asp-for="StockPurchase.VendorName" />
+            <input type="hidden" asp-for="StockPurchase.IntendedDeliveryDate" />
+
+            <input type="hidden" asp-for="StockPurchase.WCl1Price" />
+            <input type="hidden" asp-for="StockPurchase.WCl2Price" />
+            <input type="hidden" asp-for="StockPurchase.WCl3Price" />
+            <input type="hidden" asp-for="StockPurchase.WCl4Price" />
+            <input type="hidden" asp-for="StockPurchase.WCl5Price" />
+            <input type="hidden" asp-for="StockPurchase.WCl6Price" />
+            <input type="hidden" asp-for="StockPurchase.WCl7Price" />
+            <input type="hidden" asp-for="StockPurchase.WCl8Price" />
+            <input type="hidden" asp-for="StockPurchase.WCl9Price" />
+            <input type="hidden" asp-for="StockPurchase.WCl10Price" />
+            <input type="hidden" asp-for="StockPurchase.WCl11Price" />
+            <input type="hidden" asp-for="StockPurchase.WCl12Price" />
+
+            <div class="form-group">
+                <label asp-for="StockPurchase.TransportID" class="control-label"></label>
+                <select asp-for="StockPurchase.TransportID" class="form-control" asp-items="ViewBag.TransportID"></select>
+                <span asp-validation-for="StockPurchase.TransportID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.DateDelivered" class="control-label"></label>
+                <input asp-for="StockPurchase.DateDelivered" class="form-control" />
+                <span asp-validation-for="StockPurchase.DateDelivered" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.NumberDelivered" class="control-label"></label>
+                <input asp-for="StockPurchase.NumberDelivered" class="form-control" />
+                <span asp-validation-for="StockPurchase.NumberDelivered" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="StockPurchase.EstimatedWeight" class="control-label"></label>
+                <input asp-for="StockPurchase.EstimatedWeight" class="form-control" />
+                <span asp-validation-for="StockPurchase.EstimatedWeight" class="text-danger"></span>
+            </div>*@
+
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="StockPurchase.InvoiceRecD" /> @Html.DisplayNameFor(model => model.StockPurchase.InvoiceRecD)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.ContactName" class="control-label"></label>
+                <input asp-for="StockPurchase.ContactName" class="form-control" />
+                <span asp-validation-for="StockPurchase.ContactName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.ContactPhone" class="control-label"></label>
+                <input asp-for="StockPurchase.ContactPhone" class="form-control" />
+                <span asp-validation-for="StockPurchase.ContactPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockPurchase.ContactFax" class="control-label"></label>
+                <input asp-for="StockPurchase.ContactFax" class="form-control" />
+                <span asp-validation-for="StockPurchase.ContactFax" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $(window).keydown(function (event) {
+            if (event.keyCode == 13) {
+                event.preventDefault();
+                return false;
+            }
+        });
+    });
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

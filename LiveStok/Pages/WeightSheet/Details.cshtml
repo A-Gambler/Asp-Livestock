@@ -1,0 +1,77 @@
+﻿@page
+@model LiveStok.Pages.WeightSheetPage.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Weight Sheet</h2>
+
+<div>
+    <hr />
+    <div class="row">
+        <div class="col-md-3">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.WeightSheet.StockPurchase.BuyerNo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.WeightSheet.StockPurchase.BuyerNo)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.WeightSheet.LotNumber)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.WeightSheet.LotNumber)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.WeightSheet.Date)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.WeightSheet.Date)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.WeightSheet.Origin)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.WeightSheet.Origin)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.WeightSheet.Category)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.WeightSheet.Category)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.WeightSheet.Skin)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.WeightSheet.Skin)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.WeightSheet.WeightOff)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.WeightSheet.WeightOff)
+                </dd>
+            </dl>
+
+            <div>
+                <a asp-page="./Edit" asp-route-id="@Model.WeightSheet.ID">Edit</a> |
+                <a asp-page="./Index">Back to List</a>
+            </div>
+        </div>
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-6">
+            <partial name="PartialWeightSheetCalculator" model="Model.WeightSheetCalculation" />
+            @*@{
+                await Html.RenderPartialAsync("PartialWeightSheetCalculator", Model.WeightSheetCalculation);
+            }*@
+        </div>
+
+    </div>
+    </div>
+

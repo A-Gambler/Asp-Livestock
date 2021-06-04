@@ -1,0 +1,25 @@
+﻿@page
+@model LiveStok.Pages.LocationsPage.DetailsModel
+
+<div>
+    <h4>Location</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Location.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Location.Name)
+        </dd>
+        <dt>
+            Hidden
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Location.Hide)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Location.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
